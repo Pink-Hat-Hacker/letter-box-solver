@@ -6,10 +6,6 @@ import {solvePuzzle} from "./Components/solve";
 import yoyoImg from "./assets/yoyo.png";
 import './App.css';
 
-const cors = require("cors");
-
-
-
 function App() {
   const [letters, setLetters] = useState(['', '', '', '', '', '', '', '', '', '', '', '']);
   const [errorMessage, setErrorMessage] = useState('');
@@ -38,7 +34,7 @@ function App() {
      * 
      * Currently using a proxy server for cors
      */
-    axios.get('https://www.nytimes.com/puzzles/letter-boxed').then((response: any) => {
+    axios.get('/puzzles/letter-boxed').then((response: any) => {
         const htmlContent = response.data;
         // Define a regular expression to match the JSON containing "sides"
         const regex = /window\.gameData\s*=\s*({[^}]*})/;
