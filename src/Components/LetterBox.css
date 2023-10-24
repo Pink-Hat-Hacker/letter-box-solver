@@ -1,0 +1,71 @@
+:root {
+    --lb-pink: #FC716B;
+    --lb-red: #E10736;
+    --lb-salmon: #E87D7E;
+    --lb-orange: #FF3832;
+    --white: #ffffff;
+    --black: #000;
+}
+
+.lb-box-content {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    outline: var(--black) 5px solid;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.lb-input-container {
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 85%; 
+}
+
+.lb-group-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex: 1;
+}
+.lb-group-bottom {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    flex: 1;
+}
+.lb-input-box {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    font-size: 24px;
+    border: 2px solid #000;
+    border-radius: 5px;
+    outline: none;
+    margin: 1px;
+}
+
+.lb-group-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    height: 90%;
+    margin-top: 10%;
+}
+
+.lb-group-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    height: 90%;
+    margin-top: 10%;
+
+}
+
+/* In the future make this box responsive to all devices */
+
