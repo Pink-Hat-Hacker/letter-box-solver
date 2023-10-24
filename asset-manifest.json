@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/letter-box-solver/static/css/main.073c9b0a.css",
-    "main.js": "/letter-box-solver/static/js/main.1e32f997.js",
+    "main.css": "/letter-box-solver/static/css/main.80a22354.css",
+    "main.js": "/letter-box-solver/static/js/main.bca69834.js",
     "static/js/787.558dac03.chunk.js": "/letter-box-solver/static/js/787.558dac03.chunk.js",
-    "static/media/logo.svg": "/letter-box-solver/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "static/media/yoyo.png": "/letter-box-solver/static/media/yoyo.c8971a09d74f8259fbf3.png",
     "index.html": "/letter-box-solver/index.html",
-    "main.073c9b0a.css.map": "/letter-box-solver/static/css/main.073c9b0a.css.map",
-    "main.1e32f997.js.map": "/letter-box-solver/static/js/main.1e32f997.js.map",
+    "main.80a22354.css.map": "/letter-box-solver/static/css/main.80a22354.css.map",
+    "main.bca69834.js.map": "/letter-box-solver/static/js/main.bca69834.js.map",
     "787.558dac03.chunk.js.map": "/letter-box-solver/static/js/787.558dac03.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.073c9b0a.css",
-    "static/js/main.1e32f997.js"
+    "static/css/main.80a22354.css",
+    "static/js/main.bca69834.js"
   ]
 }
