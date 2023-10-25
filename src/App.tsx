@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios'; 
 
 import {LetterBox} from "./Components/LetterBox";
-import {solvePuzzle} from "./Components/solve";
+import {SolvePuzzle} from "./Components/solve";
 import yoyoImg from "./assets/yoyo.png";
 import './App.css';
 
@@ -20,7 +20,7 @@ function App() {
       setNYTBool(false);
     } else {
       setErrorMessage('');
-      solvePuzzle(letters, nytBool);
+      SolvePuzzle(letters, nytBool);
     }
   };
 

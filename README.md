@@ -6,7 +6,7 @@ Letter Boxed Solver by Pink-Hat-Hacker (aka Zoë Y. Valladares) is inspired by [
 ## Back-end
 
 ## What to do When Forking?
-|    Python     |   Typescript  |     React     |
-| ------------- | ------------- | ------------- |
-| Content Cell  | Content Cell  |  Content Cell |
-| Content Cell  | Content Cell  |  Content Cell |
+|   Typescript  |     React     |
+| ------------- | ------------- |
+| Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  |
