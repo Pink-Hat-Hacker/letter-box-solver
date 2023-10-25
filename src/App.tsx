@@ -9,6 +9,7 @@ import './App.css';
 function App() {
   const [letters, setLetters] = useState(['', '', '', '', '', '', '', '', '', '', '', '']);
   const [errorMessage, setErrorMessage] = useState('');
+  const [nytBool, setNYTBool] = useState(false);
 
   const handleSolve = () => {
     // Check if all 12 letter input boxes are filled with distinct characters
@@ -16,9 +17,10 @@ function App() {
 
     if (uniqueLetters.size !== 12) {
       setErrorMessage('please input 3 unique letters per side');
+      setNYTBool(false);
     } else {
       setErrorMessage('');
-      solvePuzzle(letters);
+      solvePuzzle(letters, nytBool);
     }
   };
 
@@ -26,6 +28,7 @@ function App() {
     // Clear all the letters
     const newLetters = Array(12).fill('');
     setLetters(newLetters);
+    setNYTBool(false);
   };
 
   const handleAutofill = () => {
@@ -44,6 +47,7 @@ function App() {
           const jsonData = JSON.parse(match[1]);
           const sides = jsonData.sides;
           setLetters(sides.join('').split(''));
+          setNYTBool(true);
         } else {
           console.log('No match found for gameData in the HTML content.');
         }
