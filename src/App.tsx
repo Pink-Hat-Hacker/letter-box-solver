@@ -10,6 +10,7 @@ function App() {
   const [letters, setLetters] = useState(['', '', '', '', '', '', '', '', '', '', '', '']);
   const [errorMessage, setErrorMessage] = useState('');
   const [nytBool, setNYTBool] = useState(false);
+  const [, setInfo] = useState<Promise<{}>>();
 
   const handleSolve = () => {
     // Check if all 12 letter input boxes are filled with distinct characters
@@ -20,7 +21,7 @@ function App() {
       setNYTBool(false);
     } else {
       setErrorMessage('');
-      SolvePuzzle(letters, nytBool);
+      setInfo(SolvePuzzle(letters, nytBool));
     }
   };
 

@@ -7,6 +7,8 @@ export async function SolvePuzzle(letters: string[], autofill: boolean) {
         const sides = splitIntoGroups(letters, 3);
         const nytSolution = await fetchNYTSolution();
         // return a json with the sides, nytSolution found and the list of solves
+        const solutionList = solveWithWordlist(sides)
+        console.log("Letters: %s \n NYT Solution: %s \n Solution List: %s", sides, nytSolution, solutionList);
         return {
             'Letters': sides,
             'NYT Solution': nytSolution,
@@ -53,40 +55,43 @@ function splitIntoGroups(letters: string[], groupSize: number): string[] {
 }
 
 function solveWithWordlist(letterGroups: string[]): string[] {
-    const results: string[] = [];
+    const result: string[] = [];
+
+    function isValidWord(word: string) {
+      return wordlist.includes(word);
+    }
   
-    // Recursive function to explore all combinations
-    function findCombinations(currentWord: string, usedLetters: string[]) {
-      if (currentWord.length >= 3) {
-        // Check if it's a valid word
-        if (wordlist.includes(currentWord)) {
-          usedLetters = usedLetters.concat(currentWord.split(''));
-          currentWord = '';
-        }
-      }
-  
-      // Check if all letters are used
-      if (usedLetters.length === letterGroups.join('').length) {
-        results.push(currentWord);
+    function findSolutions(remainingGroups: string[], currentSolution: string) {
+      if (remainingGroups.length === 0) {
+        result.push(currentSolution.slice()); // Clone the current solution
         return;
       }
   
-      // Iterate through sides
-      for (let i = 0; i < letterGroups.length; i++) {
-        const side = letterGroups[i];
+      const lastLetter = currentSolution[currentSolution.length - 1];
+      for (let i = 0; i < remainingGroups.length; i++) {
+        const group = remainingGroups[i];
+        const groupLetters = group.split('');
   
-        // Check if the next letter is from a different side
-        if (!usedLetters.includes(side[0])) {
-          const nextWord = currentWord + side;
-          const nextUsedLetters = usedLetters.concat(side.split(''));
+        if (lastLetter !== groupLetters[0]) {
+          const newSolution = currentSolution.concat(group);
+          const newRemainingGroups = remainingGroups.slice(0, i).concat(remainingGroups.slice(i + 1));
   
-          findCombinations(nextWord, nextUsedLetters);
+          findSolutions(newRemainingGroups, newSolution);
         }
       }
     }
-    // Start with an empty word and no used letters
-    findCombinations('', []);
-    console.log(results);
-    return results;
+  
+    findSolutions(letterGroups, "");
+  
+    const validSolutions = result.filter((solution) => {
+      // Combine the solution into one string
+        const combined = solution;
+  
+      // Check if it contains only valid words and is at least 3 letters long
+      return combined.length >= 3 && isValidWord(combined);
+    });
+
+    console.log(validSolutions);
+    return validSolutions;
 }
   
