@@ -1,86 +1,87 @@
 class TrieNode {
-  children: Map<string, TrieNode>;
-  isEndOfWord: boolean;
+    children: Map<string, TrieNode>;
+    isEndOfWord: boolean;
 
-  constructor() {
-    this.children = new Map<string, TrieNode>();
-    this.isEndOfWord = false;
-  }
+    constructor() {
+        this.children = new Map();
+        this.isEndOfWord = false;
+    }
 }
 
-// Function to insert a word into the Trie
-function insertWord(root: TrieNode, word: string) {
-  let node = root;
-  for (const char of word) {
-    if (!node.children.has(char)) {
-      node.children.set(char, new TrieNode());
+class Trie {
+    root: TrieNode;
+
+    constructor() {
+        this.root = new TrieNode();
     }
-    node = node.children.get(char)!;
-  }
-  node.isEndOfWord = true;
+
+    insert(word: string) {
+        let node = this.root;
+        for (const char of word) {
+            if (!node.children.has(char)) {
+                node.children.set(char, new TrieNode());
+            }
+            node = node.children.get(char)!;
+        }
+        node.isEndOfWord = true;
+    }
+
+    search(word: string): boolean {
+        let node = this.root;
+        for (const char of word) {
+            if (!node.children.has(char)) {
+                return false;
+            }
+            node = node.children.get(char)!;
+        }
+        return node.isEndOfWord;
+    }
 }
 
-// Function to find 2-word solutions for Letter Boxed
-export function findLetterBoxedSolutions(
-  letterGroups: string[],
-  wordlist: Set<string>
-): string[][] {
-  // Build a Trie from the wordlist
-  const root = new TrieNode();
-  for (const word of wordlist) {
-    insertWord(root, word);
-  }
+export function findTwoWordSolutions(letterGroups: string[], wordlist: string[]): string[][] {
+    const solutions: string[][] = [];
+    const trie = new Trie();
 
-  const solutions: string[][] = [];
-
-  // Recursive function to find solutions
-  function findSolutions(
-    visited: Set<string>,
-    currentWord: string,
-    lastChar: string
-  ) {
-    if (currentWord.length >= 3) {
-      visited.add(currentWord);
-      lastChar = currentWord.charAt(currentWord.length - 1);
+    for (const word of wordlist) {
+        trie.insert(word);
     }
 
-    if (visited.size === letterGroups.join("").length) {
-      if (visited.size % 3 === 0) {
-        solutions.push([...visited]);
-      }
-      visited.delete(currentWord);
-      return;
+    function backtrack(path: string[], currentSide: string[], unusedSides: string[][]): void {
+        if (currentSide.length === 0) {
+            const word = path.join('');
+            console.log("Word: " + word);
+            if (trie.search(word)) {
+                solutions.push([path.join("")]);
+                console.log("(line 55) Solutions: " + solutions);
+            }
+            return;
+        }
+
+        for (let i = 0; i < currentSide.length; i++) {
+            if (path.length > 0 && path[path.length - 1].endsWith(currentSide[i])) {
+                console.log("Path: " + path);
+                continue; // Avoid consecutive letters
+            }
+
+            const newSide = currentSide.slice();
+            const newPath = path.slice();
+            newPath.push(currentSide[i]);
+            newSide.splice(i, 1);
+
+            backtrack(newPath, newSide, unusedSides);
+        }
+
+        if (unusedSides.length > 0) {
+            const newSide = unusedSides[0];
+            const newUnusedSides = unusedSides.slice(1);
+            backtrack([...path], newSide, newUnusedSides);
+        }
     }
 
-    const currentSide = letterGroups[Math.floor(visited.size / 3)];
-    for (const char of currentSide) {
-      if (visited.has(char)) continue;
-      const nextWord = currentWord + char;
+    const [top, right, bottom, left] = letterGroups.map((group) => Array.from(group));
+    console.log("Sides: " + top, right, bottom, left);
+    backtrack([], top, [right, bottom, left]);
 
-      if (startsWithValidWord(root, nextWord) && lastChar !== char) {
-        findSolutions(visited, nextWord, lastChar);
-      }
-    }
-
-    visited.delete(currentWord);
-  }
-
-  for (const side of letterGroups) {
-    for (const char of side) {
-      findSolutions(new Set<string>(), char, char);
-    }
-  }
-  return solutions;
+    return solutions;
 }
 
-// Function to check if a valid word starts with the given prefix
-function startsWithValidWord(root: TrieNode, prefix: string): boolean {
-  let node = root;
-  for (const char of prefix) {
-    if (!node.children.has(char)) {
-      return false;
-    }
-    node = node.children.get(char)!;
-  }
-  return node.isEndOfWord;
-}
