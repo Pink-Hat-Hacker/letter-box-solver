@@ -31,7 +31,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding-top: 50px;
+    padding-top: 40px;
     overflow: scroll;
 }
 
@@ -57,4 +57,11 @@
 }
 .close:hover {
     color: var(--lb-red);
+}
+
+@media (max-width: 400px) {
+    .modal-content {
+        width: 350px;
+        height: 400px;
+    }
 }

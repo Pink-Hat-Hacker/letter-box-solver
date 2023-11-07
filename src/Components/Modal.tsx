@@ -20,16 +20,16 @@ export function Modal({ isOpen, onClose, info }: { isOpen: boolean; onClose: () 
                 </p>
 
                 <h3> 🧮 Calculated Solution List: </h3>
-                <p>
+                <span>
                     {info
                         ? info[2]
-                            ? info[2].map((item) => (
-                                <p>{item[0] + " -> " +item[1]}</p>
+                            ? info[2].map((item, index) => (
+                                <p key={index.toString()}>{item[0] + " -> " +item[1]}</p>
                             )
                             )
                             : "No solutions found"
                         : "No solutions found"}
-                </p>
+                </span>
             </div>
         </div>
     ) : null;

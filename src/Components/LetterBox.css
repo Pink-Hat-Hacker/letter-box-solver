@@ -11,7 +11,7 @@
     position: relative;
     width: 400px;
     height: 400px;
-    outline: var(--black) 5px solid;
+    outline: var(--black) 6px solid;
     border-radius: 2px;
     display: flex;
     justify-content: center;
@@ -26,6 +26,17 @@
     height: 85%; 
 }
 
+.lb-input-box {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    font-size: 24px;
+    border: 2px solid #000;
+    border-radius: 5px;
+    outline: none;
+    margin: 1px;
+}
+
 .lb-group-top {
     display: flex;
     justify-content: space-between;
@@ -38,17 +49,6 @@
     align-items: flex-end;
     flex: 1;
 }
-.lb-input-box {
-    width: 50px;
-    height: 50px;
-    text-align: center;
-    font-size: 24px;
-    border: 2px solid #000;
-    border-radius: 5px;
-    outline: none;
-    margin: 1px;
-}
-
 .lb-group-left {
     display: flex;
     flex-direction: column;
@@ -57,7 +57,6 @@
     height: 90%;
     margin-top: 10%;
 }
-
 .lb-group-right {
     display: flex;
     flex-direction: column;
@@ -69,4 +68,15 @@
 }
 
 /* In the future make this box responsive to all devices */
+@media (max-width: 400px) {
+    .lb-box-content {
+        width: 300px;
+        height: 300px;
+    }
 
+    .lb-input-box {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+}
