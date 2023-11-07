@@ -1,32 +1,22 @@
 import axios from "axios"; // Use axios for web scraping
 import { wordlist } from "./wordlist";
-// import { Solver } from "./TrieNode";
-// import { useState, useEffect } from "react";
 
 
 export async function SolvePuzzle(letters: string[], autofill: boolean) {
   // if user autofilled, look for the nyt solution
   const sides = splitIntoGroups(letters, 3);
+
   if (autofill) {
     const nytSolution = await fetchNYTSolution();
     const solutionList = solveWithWordlist(sides);
-    
-    console.log(
-      "Letters: %s \n NYT Solution: %s \n Solution List: %s",
-      sides,
-      nytSolution,
-      solutionList
-    );
-
     return {
       Letters: sides,
       "NYT Solution": nytSolution,
-      "Solution List": solveWithWordlist(sides),
+      "Solution List": solutionList,
     };
   } else {
     // NOT autofill nyt solution
     const solutionList: string[][] = solveWithWordlist(sides);
-    
     return {
       Letters: sides,
       "NYT Solution": [],
@@ -108,63 +98,24 @@ function countDistinctLettersInPairs(...words: string[]): number {
 }
 
 function solveWithWordlist(letterGroups: string[][]) {
-    const allLetters = new Set([...letterGroups[0], ...letterGroups[1], ...letterGroups[2], ...letterGroups[3]]);
     const acceptableWords: string[] = wordlist.filter((w: string): boolean => isValidWord(w, letterGroups));
 
-    let longestWord = '';
-    let mostDistinctWord = '';
-    let maxDistinctLetters = 0;
-    let bestPair: [string, string] = ['', ''];
-    let maxDistinctLettersInPair = 0;
-    let bestTriple: [string, string, string] = ['', '', ''];
-    let maxDistinctLettersInTriple = 0;
+    let result: string[][] = [];
 
     for (const word of acceptableWords) {
-        if (word.length > longestWord.length) {
-            longestWord = word;
-        }
-    
-        const distinctLetters = countDistinctLetters(word);
-        if (distinctLetters > maxDistinctLetters) {
-            maxDistinctLetters = distinctLetters;
-            mostDistinctWord = word;
-        }
-    
         // Find pairs of words
         const lastLetter = word[word.length - 1];
         const matchingWords = acceptableWords.filter((w) => w[0] === lastLetter);
         for (const match of matchingWords) {
             const distinctLettersInPair = countDistinctLettersInPairs(word, match);
-            if (distinctLettersInPair > maxDistinctLettersInPair) {
-                maxDistinctLettersInPair = distinctLettersInPair;
-                bestPair = [word, match];
-            }
-        }
-    }
-    
-    if (maxDistinctLettersInPair < allLetters.size) {
-        for (const [word1, word2] of [bestPair]) {
-            const lastLetter = word2[word2.length - 1];
-            const matchingWords = acceptableWords.filter((w) => w[0] === lastLetter);
-            for (const match of matchingWords) {
-                const distinctLettersInTriple = countDistinctLettersInPairs(word1, word2, match);
-                if (distinctLettersInTriple > maxDistinctLettersInTriple) {
-                    maxDistinctLettersInTriple = distinctLettersInTriple;
-                    bestTriple = [word1, word2, match];
-                }
+            if (distinctLettersInPair === 12) {
+                result.push([word, match]);
             }
         }
     }
     
     console.log(`Number of acceptable words: ${acceptableWords.length}`);
-    console.log(`Longest acceptable word: ${longestWord}`);
-    console.log(`Word with most distinct letters: ${mostDistinctWord}`);
-    
-    if (maxDistinctLettersInPair === allLetters.size) {
-        console.log(`Word pair covers all distinct letters: (${bestPair[0]}, ${bestPair[1]})`);
-    } else {
-        console.log(`Word triple with most distinct letters: (${bestTriple[0]}, ${bestTriple[1]}, ${bestTriple[2]})`);
-    }
+    console.log(result);
 
-    return[[],[]];
+    return result;
 }
