@@ -1,48 +1,48 @@
 import axios from "axios"; // Use axios for web scraping
 import { wordlist } from "./wordlist";
 
+export async function solvePuzzle(letters: string[], autofill: boolean) {
+    // if user autofilled, look for the nyt solution
+    const sides = splitIntoGroups(letters, 3);
 
-export async function SolvePuzzle(letters: string[], autofill: boolean) {
-  // if user autofilled, look for the nyt solution
-  const sides = splitIntoGroups(letters, 3);
+    if (autofill) {
+        const nytSolution = await fetchNYTSolution();
+        const solutionList = solveWithWordlist(sides);
 
-  if (autofill) {
-    const nytSolution = await fetchNYTSolution();
-    const solutionList = solveWithWordlist(sides);
-    return {
-      Letters: sides,
-      "NYT Solution": nytSolution,
-      "Solution List": solutionList,
-    };
-  } else {
-    // NOT autofill nyt solution
-    const solutionList: string[][] = solveWithWordlist(sides);
-    return {
-      Letters: sides,
-      "NYT Solution": [],
-      "Solution List": solutionList,
-    };
-  }
+        return {
+            "Letters": sides,
+            "NYT Solution": nytSolution,
+            "Solution List": solutionList,
+        };
+    } else {
+        // NOT autofill nyt solution
+        const solutionList: string[][] = solveWithWordlist(sides);
+        return {
+            "Letters": sides,
+            "NYT Solution": Promise<{}>,
+            "Solution List": solutionList,
+        };
+    }
 }
 
 async function fetchNYTSolution() {
-  try {
-    const response = await axios.get("/puzzles/letter-boxed");
-    const htmlContent = response.data;
-    const regex = /window\.gameData\s*=\s*({[^}]*})/;
-    const match = htmlContent.match(regex);
+    try {
+        const response = await axios.get("/puzzles/letter-boxed");
+        const htmlContent = response.data;
+        const regex = /window\.gameData\s*=\s*({[^}]*})/;
+        const match = htmlContent.match(regex);
 
-    if (match && match[1]) {
-      const jsonData = JSON.parse(match[1]);
-      return jsonData.ourSolution;
-    } else {
-      console.log("No match found for gameData in the HTML content.");
-      return null; // Handle the case where the data is not found
+        if (match && match[1]) {
+            const jsonData = JSON.parse(match[1]);
+            return jsonData.ourSolution;
+        } else {
+            console.log("No match found for gameData in the HTML content.");
+            return null; // Handle the case where the data is not found
+        }
+    } catch (error) {
+        console.error("Error fetching nyt solution:", error);
+        return null; // Handle the error
     }
-  } catch (error) {
-    console.error("Error fetching nyt solution:", error);
-    return null; // Handle the error
-  }
 }
 
 function splitIntoGroups(letters: string[], groupSize: number): string[][] {
@@ -113,7 +113,7 @@ function solveWithWordlist(letterGroups: string[][]) {
             }
         }
     }
-    
+
     console.log(`Number of acceptable words: ${acceptableWords.length}`);
     console.log(result);
 

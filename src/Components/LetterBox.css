@@ -12,6 +12,7 @@
     width: 400px;
     height: 400px;
     outline: var(--black) 5px solid;
+    border-radius: 2px;
     display: flex;
     justify-content: center;
     align-items: flex-start;

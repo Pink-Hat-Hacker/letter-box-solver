@@ -1,0 +1,60 @@
+:root {
+    --lb-pink: #FC716B;
+    --lb-red: #E10736;
+    --lb-salmon: #E87D7E;
+    --lb-orange: #FF3832;
+    --white: #ffffff;
+    --black: #000;
+}
+
+@font-face {
+    font-family: "nyt-franklin";
+    src: url("../fonts/franklin-normal-400.woff2") format("woff2"), url("../fonts/franklin-normal-400.woff2") format("woff");
+    font-weight: 400;
+    font-style: normal
+}
+
+@font-face {
+    font-family: "nyt-karnakcondensed";
+    src: url("../fonts/karnakcondensed-normal-700.woff2") format("woff2"), url("../fonts/karnakcondensed-normal-700.woff2") format("woff");
+    font-weight: 700;
+    font-style: normal
+}
+
+.modal-content {
+    background-color: white;
+    outline: var(--black) 5px solid;
+    border-radius: 5px;
+    position: absolute;
+    width: 60%;
+    height: 40%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding-top: 50px;
+    overflow: scroll;
+}
+
+.modal-content h3 {
+    font-family: "nyt-karnakcondensed";
+    font-size: 28px;
+    padding-bottom: 10px;
+}
+.modal-content p {
+    font-family: "nyt-franklin";
+    font-size: 20px;
+    padding-bottom: 20px;
+}
+
+.close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-right: 10px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 32px;
+}
+.close:hover {
+    color: var(--lb-red);
+}

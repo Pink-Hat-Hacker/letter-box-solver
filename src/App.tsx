@@ -2,16 +2,26 @@ import React, { useState } from 'react';
 import axios from 'axios'; 
 
 import {LetterBox} from "./Components/LetterBox";
-import {SolvePuzzle} from "./Components/solve";
+import {solvePuzzle} from "./Components/solve";
 import yoyoImg from "./assets/yoyo.png";
 import './App.css';
+import { Modal } from './Components/Modal';
 
 function App() {
   const [letters, setLetters] = useState(['', '', '', '', '', '', '', '', '', '', '', '']);
   const [errorMessage, setErrorMessage] = useState('');
   const [nytBool, setNYTBool] = useState(false);
-  const [, setInfo] = useState<Promise<{}>>();
+  const [info, setInfo] = useState<[][]>();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+  
   const handleSolve = () => {
     // Check if all 12 letter input boxes are filled with distinct characters
     const uniqueLetters = new Set(letters.filter(letter => letter !== ''));
@@ -21,7 +31,15 @@ function App() {
       setNYTBool(false);
     } else {
       setErrorMessage('');
-      setInfo(SolvePuzzle(letters, nytBool));
+      solvePuzzle(letters, nytBool)
+      .then(result => {
+        setInfo([result.Letters, result['NYT Solution'], result['Solution List']]); // Set the resolved value to info
+        openModal(); // Open the modal
+      })
+      .catch(error => {
+        // Handle any errors here
+        console.error('Error in solving puzzle:', error);
+      });
     }
   };
 
@@ -78,6 +96,7 @@ function App() {
           <button type="button" className="lb-button" data-testid="lb-submit" onClick={handleSolve}>Submit</button>
         </div>
       </section>
+      <Modal isOpen={isModalOpen} onClose={closeModal} info={info} />
       {errorMessage && <div className="error-message">{errorMessage}</div>}
     </main>
     <footer>
