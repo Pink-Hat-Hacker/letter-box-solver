@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/letter-box-solver/static/css/main.039be707.css",
-    "main.js": "/letter-box-solver/static/js/main.1fb23074.js",
+    "main.css": "/letter-box-solver/static/css/main.4533eeea.css",
+    "main.js": "/letter-box-solver/static/js/main.2d14d604.js",
     "static/js/787.558dac03.chunk.js": "/letter-box-solver/static/js/787.558dac03.chunk.js",
     "static/media/yoyo.png": "/letter-box-solver/static/media/yoyo.c8971a09d74f8259fbf3.png",
     "static/media/karnakcondensed-normal-700.woff2": "/letter-box-solver/static/media/karnakcondensed-normal-700.07b23e480f2f9109a837.woff2",
     "static/media/franklin-normal-400.woff2": "/letter-box-solver/static/media/franklin-normal-400.75eb76a130af6369b202.woff2",
     "index.html": "/letter-box-solver/index.html",
-    "main.039be707.css.map": "/letter-box-solver/static/css/main.039be707.css.map",
-    "main.1fb23074.js.map": "/letter-box-solver/static/js/main.1fb23074.js.map",
+    "main.4533eeea.css.map": "/letter-box-solver/static/css/main.4533eeea.css.map",
+    "main.2d14d604.js.map": "/letter-box-solver/static/js/main.2d14d604.js.map",
     "787.558dac03.chunk.js.map": "/letter-box-solver/static/js/787.558dac03.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.039be707.css",
-    "static/js/main.1fb23074.js"
+    "static/css/main.4533eeea.css",
+    "static/js/main.2d14d604.js"
   ]
 }
