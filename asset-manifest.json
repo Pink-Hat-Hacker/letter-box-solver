@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/letter-box-solver/static/css/main.6e6af3d2.css",
-    "main.js": "/letter-box-solver/static/js/main.0d7e7775.js",
+    "main.js": "/letter-box-solver/static/js/main.a8bc5fbd.js",
     "static/js/787.558dac03.chunk.js": "/letter-box-solver/static/js/787.558dac03.chunk.js",
     "static/media/yoyo.png": "/letter-box-solver/static/media/yoyo.c8971a09d74f8259fbf3.png",
     "static/media/karnakcondensed-normal-700.woff2": "/letter-box-solver/static/media/karnakcondensed-normal-700.07b23e480f2f9109a837.woff2",
     "static/media/franklin-normal-400.woff2": "/letter-box-solver/static/media/franklin-normal-400.75eb76a130af6369b202.woff2",
     "index.html": "/letter-box-solver/index.html",
     "main.6e6af3d2.css.map": "/letter-box-solver/static/css/main.6e6af3d2.css.map",
-    "main.0d7e7775.js.map": "/letter-box-solver/static/js/main.0d7e7775.js.map",
+    "main.a8bc5fbd.js.map": "/letter-box-solver/static/js/main.a8bc5fbd.js.map",
     "787.558dac03.chunk.js.map": "/letter-box-solver/static/js/787.558dac03.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6e6af3d2.css",
-    "static/js/main.0d7e7775.js"
+    "static/js/main.a8bc5fbd.js"
   ]
 }
