@@ -1,12 +1,27 @@
 # letter-box-solver
-Letter Boxed Solver by Pink-Hat-Hacker (aka Zoë Y. Valladares) is inspired by [The NYT Letter Boxed Game](https://www.nytimes.com/puzzles/letter-boxed). Using Typescript (Front-End), Python (Backend/Algorithms), and NYT's own HTML/CSS.
+Letter Boxed Solver by Pink-Hat-Hacker (aka Zoë Y. Valladares) is inspired by [The NYT Letter Boxed Game](https://www.nytimes.com/puzzles/letter-boxed). Using Typescript (Front-End and Algorithm), and NYT's own HTML/CSS.
 
-## Front-end
+## Built With
+#### Front-end
+- ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+- ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+- ![Github Pages](https://img.shields.io/badge/github%20pages-121013?style=for-the-badge&logo=github&logoColor=white)
+- ![New York Times](https://a11ybadges.com/badge?logo=newyorktimes)
+#### Back-end
 
-## Back-end
+## Contributions
+*Make sure to `npm i`*
 
-## What to do When Forking?
-|   Typescript  |     React     |
-| ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
+1. Fork the Project ![ForkIcon](https://custom-icon-badges.demolab.com/badge/Fork-orange.svg?logo=fork)
+2. Create your Feature Branch (`git checkout -b feature/NewFeature`)
+3. Commit your Changes (`git commit -m 'Add some NewFeature'`)
+4. Push to the Branch (`git push origin feature/NewFeature`)
+5. Open a **`Pull Request`**
+
+
+## Contact
+[![][linkedin-shield]][linkedin-url]
+
+
+[linkedin-url]: https://linkedin.com/in/zoe-yoyo-valladares
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
