@@ -87,6 +87,7 @@ const LetterInputBox: React.FC<{
     <input
       className="lb-input-box"
       type="text"
+      placeholder='__'
       value={letter}
       onChange={handleChange}
       onKeyDown={handleKeyDown}

@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
 import {LetterBox} from "./Components/LetterBox";
 import {solvePuzzle} from "./Components/solve";
 import yoyoImg from "./assets/yoyo.png";
 import './App.css';
 import { Modal } from './Components/Modal';
-
-
 
 function App() {
   const [letters, setLetters] = useState(['', '', '', '', '', '', '', '', '', '', '', '']);
@@ -58,7 +55,7 @@ function App() {
      * 
      * Currently using a proxy server for cors
      */
-    axios.get('/puzzles/letter-boxed').then((response: any) => {
+    axios.get(`/puzzles/letter-boxed`).then((response: any) => {
         const htmlContent = response.data;
         // Define a regular expression to match the JSON containing "sides"
         const regex = /window\.gameData\s*=\s*({[^}]*})/;
