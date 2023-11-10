@@ -16,6 +16,7 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
+    background-color: var(--lb-pink);
 }
 
 .lb-input-container {
