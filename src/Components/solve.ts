@@ -27,7 +27,7 @@ export async function solvePuzzle(letters: string[], autofill: boolean) {
 
 async function fetchNYTSolution() {
     try {
-        const response = await axios.get("/puzzles/letter-boxed");
+        const response = await axios.get("/api/letterBoxed");
         const htmlContent = response.data;
         const regex = /window\.gameData\s*=\s*({[^}]*})/;
         const match = htmlContent.match(regex);
