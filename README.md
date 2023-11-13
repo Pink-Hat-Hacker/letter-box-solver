@@ -5,10 +5,10 @@ Letter Boxed Solver by Pink-Hat-Hacker (aka Zoë Y. Valladares) is inspired by [
 #### Front-end
 - ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
 - ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-- ![Github Pages](https://img.shields.io/badge/github%20pages-121013?style=for-the-badge&logo=github&logoColor=white)
 - ![New York Times](https://a11ybadges.com/badge?logo=newyorktimes)
 #### Back-end
-
+- ![Github Pages](https://img.shields.io/badge/github%20pages-121013?style=for-the-badge&logo=github&logoColor=white) - Dev
+- ![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white) - Prod
 ## Contributions
 *Make sure to `npm i`*
 
