@@ -1,7 +1,7 @@
 {
   "name": "letter-box-solver",
   "version": "0.1.0",
-  "homepage": "https://pink-hat-hacker.github.io/letter-box-solver",
+  "homepage": "https://letter-box-solver.vercel.app/",
   "private": true,
   "type": "module",
   "proxy": "https://www.nytimes.com",
