@@ -1,12 +1,12 @@
 @font-face {
   font-family: "nyt-franklin";
-  src: url("./fonts/franklin-normal-400.woff2") format("woff2"),url("./fonts/franklin-normal-400.woff2") format("woff");
+  src: url("../public/fonts/franklin-normal-400.woff2") format("woff2"),url("../public/fonts/franklin-normal-400.woff2") format("woff");
   font-weight: 400;
   font-style: normal
 }
 @font-face {
   font-family: "nyt-karnakcondensed";
-  src: url("./fonts/karnakcondensed-normal-700.woff2") format("woff2"),url("./fonts/karnakcondensed-normal-700.woff2") format("woff");
+  src: url("../public/fonts/karnakcondensed-normal-700.woff2") format("woff2"),url("../public/fonts/karnakcondensed-normal-700.woff2") format("woff");
   font-weight: 700;
   font-style: normal
 }
