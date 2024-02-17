@@ -122,7 +122,7 @@ function App() {
           <span>
             <a href='https://zoevalladares.com'> Zoë Y. Valladares </a>
             |
-            <a href='https://github.com/Pink-Hat-Hacker'> GitHub </a></span>
+            <a href='https://github.com/Pink-Hat-Hacker/letter-box-solver'> GitHub </a></span>
         </div>
       </footer>
     </>
